@@ -1,0 +1,259 @@
+{
+  "name": "Form sub_ver1",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "form-submission",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        320,
+        384
+      ],
+      "id": "1a872568-831a-4234-9ed7-c6b519b51748",
+      "name": "Webhook",
+      "webhookId": "f789d999-ea6e-41b0-8f05-f1f99ad0f554"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app6zLmbfFoh5LRak",
+          "mode": "list",
+          "cachedResultName": "Form submission",
+          "cachedResultUrl": "https://airtable.com/app6zLmbfFoh5LRak"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblRfn94kzaLFqogd",
+          "mode": "list",
+          "cachedResultName": "Submissions",
+          "cachedResultUrl": "https://airtable.com/app6zLmbfFoh5LRak/tblRfn94kzaLFqogd"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Full name": "={{ $json.body.name }}",
+            "Email": "={{ $json.body.email }}",
+            "Occupation": "={{ $json.body.Occupation }}",
+            "Message": "={{ $json.body.message }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Full name",
+              "displayName": "Full name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Occupation",
+              "displayName": "Occupation",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Message",
+              "displayName": "Message",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1104,
+        384
+      ],
+      "id": "1ee72059-95ac-49e4-a3a0-b56de19e3a75",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d9605a2f-d2c5-434a-81bc-b06665ca1758",
+              "name": "body.name",
+              "value": "={{ $json.body.name }}",
+              "type": "string"
+            },
+            {
+              "id": "3e3bfd30-1a4a-4bc2-9a3f-b1f1c88caa4e",
+              "name": "body.email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "34eba355-8514-4a61-9ffa-0f91b40524c8",
+              "name": "body.Occupation",
+              "value": "={{ $json.body.Occupation }}",
+              "type": "string"
+            },
+            {
+              "id": "bf9adaf1-484a-4506-9bd9-ee40ff14428d",
+              "name": "body.message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        688,
+        384
+      ],
+      "id": "9459b1fd-3aae-4991-8fd9-77e28fc87380",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "content": "## Webhook Trigger with a POST method \n\nCreate a webhook to listen for events and when running the workflow make sure it is active.",
+        "height": 384,
+        "width": 320,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        192,
+        208
+      ],
+      "typeVersion": 1,
+      "id": "563d688c-beb2-4025-ba5e-50731e67bb25",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## The Function Node\n\nThis node is used to reduce the amount of data that goes to the next node, makes the output for the next node look clean and simple.",
+        "height": 384,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        608,
+        208
+      ],
+      "typeVersion": 1,
+      "id": "f5f9e488-909c-49c7-a5f9-4436485780f9",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## The Airtable node\n\nOn this node, it's where your data is stored and managed, based on the operation. For instance in this node it has a 'create' operation where, whenever the flow executes it will create a new record in the database, you can also use Excell or Google sheet to manage your records ",
+        "height": 384,
+        "width": 528,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        992,
+        208
+      ],
+      "typeVersion": 1,
+      "id": "bd428a20-bede-4478-8798-de7673b95eaf",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Form Submission Version 1\nI have three different ways of coming to the same conclusion begining with this version where you have to use the terminal to to execute the listening webhook in your wokflow.\nIn summary what will be hapenning with this flow is that it Collects form data via webhook, filters inputs, and records them in Airtable. \n",
+        "height": 720,
+        "width": 1648,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "c34c7a30-1547-4cd4-ba57-aa7c5693c128",
+      "name": "Sticky Note3"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "7611f838-530a-4c05-b427-2df7a6a46c2b",
+  "meta": {
+    "instanceId": "733a0697341f210d530fdf11eb44270d996aabd0bf3d8826f134e399a3c8556b"
+  },
+  "id": "RRjJvR3kt3Fgvo3Q",
+  "tags": [
+    {
+      "createdAt": "2025-10-13T05:14:45.996Z",
+      "updatedAt": "2025-10-13T05:14:45.996Z",
+      "id": "90tvUiegO9yB7BBP",
+      "name": "Content"
+    }
+  ]
+}
