@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title>Kael</title>
+    </head>
+    <body>
+        <h2>Form Submittion</h2>
+        <form id="submissionForm">
+            <label>Name:</label></form><br>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label>Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label>Occupation:</label><br>
+            <input type="text" id="occupation" name="Occupation"><br><br>
+
+            <label>Message:</label><br>
+            <textarea id="message" name="message" required></textarea><br><br>
+
+            <button type="submit">Send</button>
+        </form>
+
+        <script>
+            document.getElementById("submissionFrom").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const data ={
+                    name: document.getElementById("name").value,
+                    email:document.getElementById("email").value,
+                    Occupation:document.getElementById("Occupation").value
+                };
+
+                const response = await fetch("http://localhost:5678/webhook-test/60c7afbc-1437-4e2d-bd92-629c962a239b", {
+                    method: "POST",
+                    headers:{ "Content-Type": "application/json" },
+                    body:JSON.stringify(data)
+                });
+
+                if(response.ok){
+                    alert("Form submitted successfully!");
+                }
+            });
+        </script>
+    </body>
+</html>
