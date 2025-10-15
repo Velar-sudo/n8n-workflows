@@ -63,17 +63,17 @@
         "operation": "create",
         "base": {
           "__rl": true,
-          "value": "app6zLmbfFoh5LRak",
+          "value": "XXXXXXXXXXXXXX",
           "mode": "list",
           "cachedResultName": "Form submission",
-          "cachedResultUrl": "https://airtable.com/app6zLmbfFoh5LRak"
+          "cachedResultUrl": "https://airtable.com/appXXXXXXXXXXXXXX"
         },
         "table": {
           "__rl": true,
-          "value": "tblRfn94kzaLFqogd",
+          "value": "XXXXXXXXXXXXXX",
           "mode": "list",
           "cachedResultName": "Submissions",
-          "cachedResultUrl": "https://airtable.com/app6zLmbfFoh5LRak/tblRfn94kzaLFqogd"
+          "cachedResultUrl": "https://airtable.com/appXXXXXXXXXXXXXX"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -249,7 +249,7 @@
   "versionId": "295f4800-cc77-4dd0-9d48-099c9f233eca",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "733a0697341f210d530fdf11eb44270d996aabd0bf3d8826f134e399a3c8556b"
+    "instanceId": "XXXXXXXXXXXXXXXXXXXXXXX"
   },
   "id": "ul1Jo09wzL72chTt",
   "tags": [
