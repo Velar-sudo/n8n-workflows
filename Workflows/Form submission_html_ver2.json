@@ -1,0 +1,263 @@
+{
+  "name": "Form sub_ver2",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "form-sub",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -96,
+        -144
+      ],
+      "id": "1fc56fb9-f64b-4369-b989-0f716dee653b",
+      "name": "Webhook",
+      "webhookId": "60c7afbc-1437-4e2d-bd92-629c962a239b"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a70e26bc-6717-4bcc-88a8-9dd2466a99f1",
+              "name": "body.name",
+              "value": "={{ $json.body.name }}",
+              "type": "string"
+            },
+            {
+              "id": "e954d9dd-063c-4ca4-b261-5451afc5e3ad",
+              "name": "body.email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "e55ec403-662c-4b0e-8e9e-c456137aabf8",
+              "name": "body.Occupation",
+              "value": "={{ $json.body.Occupation }}",
+              "type": "string"
+            },
+            {
+              "id": "cbec3d86-cd82-4f1c-b23a-cc5d2df27c35",
+              "name": "body.message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        256,
+        -144
+      ],
+      "id": "222b804d-171d-4c40-851e-729b551f61c7",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app6zLmbfFoh5LRak",
+          "mode": "list",
+          "cachedResultName": "Form submission",
+          "cachedResultUrl": "https://airtable.com/app6zLmbfFoh5LRak"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblRfn94kzaLFqogd",
+          "mode": "list",
+          "cachedResultName": "Submissions",
+          "cachedResultUrl": "https://airtable.com/app6zLmbfFoh5LRak/tblRfn94kzaLFqogd"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Full name": "={{ $json.body.name }}",
+            "Email": "={{ $json.body.email }}",
+            "Occupation": "={{ $json.body.Occupation }}",
+            "Message": "={{ $json.body.message }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Full name",
+              "displayName": "Full name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Occupation",
+              "displayName": "Occupation",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Message",
+              "displayName": "Message",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        656,
+        -144
+      ],
+      "id": "a0a3c21e-5009-4d8e-bff2-91870f717c56",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Trigger Webhook Node\nThe node listens for any event and executes when any data is received.",
+        "height": 368,
+        "width": 304,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -256,
+        -304
+      ],
+      "typeVersion": 1,
+      "id": "176d0836-96e5-417f-aa19-5554b8f4b61c",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Form Submission Version 2\nThis is the second version of the previous workflow where you had to listen for any activity from the terminal via a webhook, what this does is that it now uses a simple html form submission page where, you fill in the credentials and upon submition it executes the workflow and records your information in a database like Google sheets or Excel.",
+        "height": 752,
+        "width": 1472,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -464,
+        -432
+      ],
+      "typeVersion": 1,
+      "id": "0420c760-2e6b-48fc-beb6-3d94507ec3e0",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Function Node\nThis is where we filter the noise and only collect what is necessary.",
+        "height": 368,
+        "width": 304,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        160,
+        -304
+      ],
+      "typeVersion": 1,
+      "id": "896d6163-ad92-40af-b97a-e20876aee757",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## The Airtable Node\nThis is the node where all the information are stored and recorded for future reference.",
+        "height": 384,
+        "width": 336,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        560,
+        -320
+      ],
+      "typeVersion": 1,
+      "id": "f9d30327-ab98-4adb-9d9b-0beac5049b34",
+      "name": "Sticky Note3"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "295f4800-cc77-4dd0-9d48-099c9f233eca",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "733a0697341f210d530fdf11eb44270d996aabd0bf3d8826f134e399a3c8556b"
+  },
+  "id": "ul1Jo09wzL72chTt",
+  "tags": [
+    {
+      "createdAt": "2025-10-13T05:14:45.996Z",
+      "updatedAt": "2025-10-13T05:14:45.996Z",
+      "id": "90tvUiegO9yB7BBP",
+      "name": "Content"
+    }
+  ]
+}
