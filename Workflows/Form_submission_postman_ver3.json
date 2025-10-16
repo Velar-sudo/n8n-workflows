@@ -1,0 +1,261 @@
+{
+  "name": "Form sub_ver3",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "submission",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -224,
+        -96
+      ],
+      "id": "8b3b4e3a-b3d6-46a0-8116-a3b507a2047b",
+      "name": "Webhook",
+      "webhookId": "2be92ae3-56c6-4ac4-9e1a-301aca6888f5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1f52b25a-341a-4ce5-afe1-5ae1e77a40bb",
+              "name": "body.name",
+              "value": "={{ $json.body.name }}",
+              "type": "string"
+            },
+            {
+              "id": "56df3853-4538-42c2-abd4-abe0ec021932",
+              "name": "body.email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "ad49e7cf-04be-4ce9-9c5f-c98962cf2f45",
+              "name": "body.occupation",
+              "value": "={{ $json.body.occupation }}",
+              "type": "string"
+            },
+            {
+              "id": "117f1e6e-9961-4d5e-8129-6e83b943bd1e",
+              "name": "body.message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        128,
+        -96
+      ],
+      "id": "3c81456c-d19d-4b03-94d0-35e62ea7258f",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "XXXXXXXXXXXXXX",
+          "mode": "list",
+          "cachedResultName": "Form submission",
+          "cachedResultUrl": "https://airtable.com/appXXXXXXXXXXXXXX"
+        },
+        "table": {
+          "__rl": true,
+          "value": "XXXXXXXXXXXXXX",
+          "mode": "list",
+          "cachedResultName": "Submissions",
+          "cachedResultUrl": "https://airtable.com/appXXXXXXXXXXXXXX"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Full name": "={{ $json.body.name }}",
+            "Email": "={{ $json.body.email }}",
+            "Occupation": "={{ $json.body.occupation }}",
+            "Message": "={{ $json.body.message }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Full name",
+              "displayName": "Full name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Occupation",
+              "displayName": "Occupation",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Message",
+              "displayName": "Message",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        464,
+        -96
+      ],
+      "id": "1ee1fda1-b85f-4f01-af32-53b6db532364",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Webhook Node\nThe webhhook uses the POST method to listen for any event from Postman and collects the output.",
+        "height": 304,
+        "width": 320,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -384,
+        -240
+      ],
+      "typeVersion": 1,
+      "id": "227b123e-2079-4448-8dea-e50be537f4b7",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## The Function Node\nThis node is a life saver, it filters the noise and prevent cluttering of unwanted information.",
+        "height": 304,
+        "width": 320,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -32,
+        -240
+      ],
+      "typeVersion": 1,
+      "id": "f2856992-979b-450a-85f4-9c5fcc3c7740",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "##The Airtable Node\nThis the node that does the final work to collect and store your data.",
+        "height": 304,
+        "width": 336,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        352,
+        -240
+      ],
+      "typeVersion": 1,
+      "id": "ed8db501-4e90-4dc5-a352-bad04a431deb",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Form Submission Version 3\nThis is the last version that solves the same problem using a different solution, This version uses Postman. Postman will be used  \nsimulate or test the form submission without needing an actual website or frontend yet. It acts as a client that sends data to the n8n \nwebhook, just like a real user would through an HTML form.",
+        "height": 752,
+        "width": 1296,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -560,
+        -448
+      ],
+      "typeVersion": 1,
+      "id": "d857d61a-0489-4b3f-b8f4-56dced566eb4",
+      "name": "Sticky Note3"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "99aa5be6-7c08-4edd-8279-ad7526b9af5a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "XXXXXXXXXXXXXX"
+  },
+  "id": "Lrat9B5k1qvEkMuI",
+  "tags": [
+    {
+      "createdAt": "2025-10-13T05:14:45.996Z",
+      "updatedAt": "2025-10-13T05:14:45.996Z",
+      "id": "90tvUiegO9yB7BBP",
+      "name": "Content"
+    }
+  ]
+}
